@@ -29,7 +29,8 @@ if ! command -v go &>/dev/null; then
     exit 1
 fi
 
-(cd "$REPO_DIR" && go build -o sonar .)
+info "$(pwd)"
+(cd "${REPO_DIR/cli}" && go build -o sonar .)
 
 # Install
 info "Installing to $INSTALL_DIR"
