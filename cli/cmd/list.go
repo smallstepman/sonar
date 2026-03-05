@@ -12,11 +12,12 @@ import (
 )
 
 var (
-	jsonFlag    bool
-	filterFlag  string
-	sortFlag    string
-	allFlag     bool
-	columnsFlag string
+	jsonFlag       bool
+	filterFlag     string
+	sortFlag       string
+	allFlag        bool
+	columnsFlag    string
+	allColumnsFlag bool
 )
 
 var listCmd = &cobra.Command{
@@ -32,6 +33,7 @@ func init() {
 	listCmd.Flags().BoolVarP(&allFlag, "all", "a", false, "Include desktop apps (hidden by default)")
 	listCmd.Flags().StringVarP(&columnsFlag, "columns", "c", "",
 		"Columns to display (comma-separated: "+strings.Join(display.AllColumns, ", ")+")")
+	listCmd.Flags().BoolVar(&allColumnsFlag, "all-columns", false, "Display all available columns")
 	rootCmd.AddCommand(listCmd)
 }
 
@@ -58,7 +60,9 @@ func listRun(cmd *cobra.Command, args []string) error {
 	}
 
 	var columns []string
-	if columnsFlag != "" {
+	if allColumnsFlag {
+		columns = display.AllColumns
+	} else if columnsFlag != "" {
 		columns = parseColumns(columnsFlag)
 	}
 

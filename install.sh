@@ -35,7 +35,7 @@ info "$(pwd)"
 # Install
 info "Installing to $INSTALL_DIR"
 mkdir -p "$INSTALL_DIR"
-cp "$REPO_DIR/sonar" "$INSTALL_DIR/sonar"
+cp "$REPO_DIR/cli/sonar" "$INSTALL_DIR/sonar"
 chmod +x "$INSTALL_DIR/sonar"
 success "Installed sonar to $INSTALL_DIR/sonar"
 

@@ -2,6 +2,7 @@ package docker
 
 import (
 	"bufio"
+	"fmt"
 	"os/exec"
 	"strconv"
 	"strings"
@@ -52,6 +53,14 @@ func EnrichPorts(pp []ports.ListeningPort) {
 		pp[i].DockerComposeProject = c.composeProject
 		pp[i].DockerContainerPort = mappingMap[pp[i].Port].containerPort
 	}
+}
+
+// StopContainer stops a Docker container by name using `docker stop`.
+func StopContainer(name string) error {
+	if err := exec.Command("docker", "stop", name).Run(); err != nil {
+		return fmt.Errorf("failed to stop container %s: %w", name, err)
+	}
+	return nil
 }
 
 // listContainers runs `docker ps` and parses the output.

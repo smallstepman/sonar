@@ -1,6 +1,7 @@
-# Sonar
+![logo](media/logo.png)
+--------
 
-A developer tool for inspecting localhost ports. Resolves Docker container names, shows clickable URLs, and provides filtering, sorting, and real-time monitoring.
+A developer tool for inspecting local open ports. Resolves Docker container names, shows clickable URLs, and provides filtering, sorting, and real-time monitoring. Supports local port mapping.
 
 ```
 $ sonar
@@ -33,7 +34,7 @@ cd sonar
 ./install.sh
 ```
 
-This builds the binary and adds `~/.sonar/bin` to your PATH. Restart your terminal or run `source ~/.zshrc` to start using it.
+This builds the binary and adds `~/.sonar/bin` to your PATH. Restart your terminal, open a new terminal windor or run `source ~/.zshrc` to start using it.
 
 To customize the install location:
 

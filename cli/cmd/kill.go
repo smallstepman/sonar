@@ -37,10 +37,15 @@ var killCmd = &cobra.Command{
 			if lp.DockerComposeService != "" {
 				name = lp.DockerComposeService
 			}
-			fmt.Printf("%s This is Docker container %s. Consider %s instead.\n",
-				display.Yellow("Warning:"),
-				display.Bold(name),
-				display.Cyan(fmt.Sprintf("docker stop %s", lp.DockerContainer)))
+			fmt.Printf("Stopping Docker container %s on port %d\n",
+				display.Bold(name), port)
+
+			if err := docker.StopContainer(lp.DockerContainer); err != nil {
+				return err
+			}
+
+			fmt.Printf("Freed %s\n", display.Underline(lp.URL()))
+			return nil
 		}
 
 		sigName := "SIGTERM"
