@@ -9,9 +9,11 @@
 ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝  ╚═╝
 ```
 
-A developer tool for inspecting local open ports. Resolves Docker container names, shows clickable URLs, and provides filtering, sorting, and real-time monitoring. Supports local port mapping.
+Know what's running on your machine.
 
 </div>
+
+Modern dev means juggling multiple worktrees, Docker Compose stacks, detached containers, and background services — all competing for ports on localhost. `lsof -iTCP -sTCP:LISTEN` tells you a port is open; sonar tells you *what's behind it*: which container, which Compose project, how much memory it's eating, and gives you one command to kill it, tail its logs, or shell into it. No more piping `lsof` through `grep` and `awk` to figure out why port 3000 is already taken.
 
 ```
 $ sonar list
